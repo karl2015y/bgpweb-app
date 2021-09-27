@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Page extends Model
+class Components extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    public function PageComponents()
+
+    // 元件的分類
+    public function Classifications()
     {
-        return $this->hasMany('App\Models\PageComponent');
+        return $this->hasMany('App\Models\ComponentClassify');
     }
 }

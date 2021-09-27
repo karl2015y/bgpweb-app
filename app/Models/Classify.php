@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Page extends Model
+class Classify extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    public function PageComponents()
+    public function Components()
     {
-        return $this->hasMany('App\Models\PageComponent');
+        return $this->hasMany('App\Models\ComponentClassify');
     }
 }
