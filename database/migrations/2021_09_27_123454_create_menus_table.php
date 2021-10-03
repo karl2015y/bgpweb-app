@@ -20,7 +20,7 @@ class CreateMenusTable extends Migration
             //選單排序
             $table->string('index');
             //選單連結
-            $table->string('link')->unique();
+            $table->string('link');
             //選單名稱
             $table->string('name');
             //手機顯示

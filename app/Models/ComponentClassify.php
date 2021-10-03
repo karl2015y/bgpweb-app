@@ -12,7 +12,7 @@ class ComponentClassify extends Model
 
     public function Classify()
     {
-        return $this->belongsTo('App\Models\Classify');
+        return $this->belongsTo('App\Models\Classify', 'classifies_id');
     }
     public function Component()
     {

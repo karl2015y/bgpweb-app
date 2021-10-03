@@ -48,13 +48,32 @@ table {
 	border-spacing: 0;
 }
 
+
+.menu-index {
+	margin-top: -20px;
+	margin-left: 16px;
+}
+
+@media (min-width: 768px){
+	.menu-index {
+		margin-top: 0px;
+	}
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 
 .btn {
-@apply font-bold py-2 px-4 rounded;
+@apply font-bold py-2 px-4 rounded ;
+}
+.btn-sm{
+	@apply p-1;
+}
+
+.btn-rwd {
+	@apply text-center w-full lg:w-auto block lg:inline mt-2 lg:mt-0;
 }
 .btn-main {
 @apply bg-blue-500 text-white;
@@ -75,4 +94,11 @@ table {
     }
 .btn-third:hover {
     @apply bg-red-700;
+}
+
+.btn-fourth {
+    @apply bg-gray-500 text-white;
+    }
+.btn-fourth:hover {
+    @apply bg-gray-700;
 }

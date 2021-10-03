@@ -13,6 +13,6 @@ class Components extends Model
     // 元件的分類
     public function Classifications()
     {
-        return $this->hasMany('App\Models\ComponentClassify');
+        return $this->hasMany('App\Models\ComponentClassify', 'components_id');
     }
 }

@@ -54,6 +54,17 @@ table {
   border-spacing: 0;
 }
 
+.menu-index {
+  margin-top: -20px;
+  margin-left: 16px;
+}
+
+@media (min-width: 768px){
+  .menu-index {
+    margin-top: 0px;
+  }
+}
+
 /* ! tailwindcss v2.2.15 | MIT License | https://tailwindcss.com
 */
 
@@ -31945,6 +31956,25 @@ video {
   font-weight: 700;
 }
 
+.btn-sm{
+  padding: 0.25rem;
+}
+
+.btn-rwd {
+  margin-top: 0.5rem;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .btn-rwd {
+    margin-top: 0px;
+    display: inline;
+    width: auto;
+  }
+}
+
 .btn-main {
   --tw-bg-opacity: 1;
   background-color: rgba(59, 130, 246, var(--tw-bg-opacity));
@@ -31979,6 +32009,18 @@ video {
 .btn-third:hover {
   --tw-bg-opacity: 1;
   background-color: rgba(185, 28, 28, var(--tw-bg-opacity));
+}
+
+.btn-fourth {
+  --tw-bg-opacity: 1;
+  background-color: rgba(107, 114, 128, var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
+.btn-fourth:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(55, 65, 81, var(--tw-bg-opacity));
 }
 
 @media (min-width: 640px) {

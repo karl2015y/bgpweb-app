@@ -10,6 +10,9 @@
         href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
         rel="stylesheet">
     <title>@yield('title')</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.all.min.js"></script>
+
 
 </head>
 
@@ -36,7 +39,7 @@
         </div>
 
         <!-- sidebar -->
-        <div style="z-index: 60000;"
+        <div
             class="sidebar bg-white text-gray-500 w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out">
 
             <!-- logo -->
@@ -62,17 +65,23 @@
 
             <!-- nav -->
             <nav>
-                <a href="#"
-                    id="MenusPage"
+                <a href="{{ route('PagesPage') }}" id="PagesPage"
                     class="block py-2.5 px-4 rounded transition duration-200 hover:bg-green-400 hover:text-white">
-                    Menu 管理
+                    頁面管理
+                </a>
+                <a href="{{ route('MenusPage') }}" id="MenusPage"
+                    class="block py-2.5 px-4 rounded transition duration-200 hover:bg-green-400 hover:text-white">
+                    Menu管理
+                </a>
+                <a href="{{ route('ComponentsPage') }}" id="ComponentsPage"
+                    class="block py-2.5 px-4 rounded transition duration-200 hover:bg-green-400 hover:text-white">
+                    元件管理
                 </a>
                 <div>
                     <span class="block bg-gray-50 py-2.5 px-4 rounded ">
                         數據總攬
                     </span>
-                    <div
-                        class="pl-3 bg-gray-50 hover:bg-green-400 hover:text-white">
+                    <div class="pl-3 bg-gray-50 hover:bg-green-400 hover:text-white">
                         <a href="#" class="block py-2.5 px-4 rounded transition duration-200">
                             點數發放列表
                         </a>
@@ -102,7 +111,7 @@
         <div class="flex-1 ">
             <div class="flex justify-center min-h-screen bg-gray-50 ">
                 <div class="col-span-12 w-11/12 pb-10">
-                    <div class="overflow-auto lg:overflow-visible pt-5 h-full">
+                    <div id="app" class="overflow-auto lg:overflow-visible pt-5 h-full">
                         <div class="text-3xl font-bold">@yield('classification-name')</div>
                         <div class="pt-5 pb-3 flex items-center font-bold">
                             @yield('Breadcrumb')
@@ -121,24 +130,30 @@
 
     {{-- Menu 提醒 --}}
     <script type="text/javascript">
-        if(document.getElementById('{{\Request::route()->getName()}}')){
-            document.getElementById('{{\Request::route()->getName()}}').className+=' rounded bg-green-200 text-white shadow-inner'
+        if (document.getElementById('{{ \Request::route()->getName() }}')) {
+            document.getElementById('{{ \Request::route()->getName() }}').className +=
+                ' rounded bg-green-200 text-white shadow-inner'
         }
     </script>
 
     @if (session('message') && session('message_type') && session('message_title'))
         <script type="text/javascript">
-            window.createNotification("{{ session('message_type') }}", "{{ session('message_title') }}",
-                "{{ session('message') }}");
+            Swal.fire({
+                icon: "{{ session('message_type') }}",
+                title: "{{ session('message_title') }}",
+                text: "{{ session('message') }}"
+            })
         </script>
     @endif
 
     @if ($errors->any())
-        @foreach ($errors->all() as $index => $error)
-            <script type="text/javascript">
-                window.createNotification('error', '新增錯誤', '{{ $error }}', '{{ $index }}');
-            </script>
-        @endforeach
+        <script type="text/javascript">
+            Swal.fire({
+                icon: "error",
+                title: "資料錯誤",
+                text: "{{ $errors->first() }}"
+            })
+        </script>
         </div>
     @endif
 </body>

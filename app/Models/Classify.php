@@ -11,6 +11,6 @@ class Classify extends Model
     protected $guarded = [];
     public function Components()
     {
-        return $this->hasMany('App\Models\ComponentClassify');
+        return $this->hasMany('App\Models\ComponentClassify', 'classifies_id');
     }
 }
