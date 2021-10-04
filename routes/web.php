@@ -61,4 +61,35 @@ Route::prefix('admin')->group(function () {
     Route::name('ComponentsClassifyEdit')->put('components/class/edit/{component_classification_id}', ['App\Http\Controllers\ComponentsClassifyController'::class, 'ComponentsClassifyEdit']);
     // 刪除元件類別
     Route::name('ComponentsClassifyDelete')->delete('components/class/delete/{component_classification_id}', ['App\Http\Controllers\ComponentsClassifyController'::class, 'ComponentsClassifyDelete']);
+    //---------------------------------------
+    // 頁面管理
+    // 頁面列表頁
+    Route::name('PagesPage')->get('pages', ['App\Http\Controllers\PageController'::class, 'PagesPage']);
+    // 新增頁面頁
+    Route::name('PagesAddPage')->get('pages/add', ['App\Http\Controllers\PageController'::class, 'PagesAddPage']);
+    // 新增頁面
+    Route::name('PagesAdd')->post('pages/add', ['App\Http\Controllers\PageController'::class, 'PagesAdd']);
+    // 修改頁面頁
+    Route::name('PagesEditPage')->get('pages/edit/{pages_id}', ['App\Http\Controllers\PageController'::class, 'PagesEditPage']);
+    // 修改頁面
+    Route::name('PagesEdit')->put('pages/edit/{pages_id}', ['App\Http\Controllers\PageController'::class, 'PagesEdit']);
+    // 刪除頁面
+    Route::name('PagesDelete')->delete('pages/delete/{pages_id}', ['App\Http\Controllers\PageController'::class, 'PagesDelete']);
+
+    // 頁面元件列表頁
+    Route::name('PageComponentsPage')->get('pages/{pages_id}', ['App\Http\Controllers\PageComponentsController'::class, 'PageComponentsPage']);
+    // 新增頁面元件頁
+    Route::name('PageComponentsAddPage')->get('pages/{pages_id}/add', ['App\Http\Controllers\PageComponentsController'::class, 'PageComponentsAddPage']);
+    // 新增頁面元件
+    Route::name('PageComponentsAdd')->post('pages/{pages_id}/add', ['App\Http\Controllers\PageComponentsController'::class, 'PageComponentsAdd']);
+    // 修改頁面元件頁
+    Route::name('PageComponentsEditPage')->get('pages/{pages_id}/edit/{page_components_id}', ['App\Http\Controllers\PageComponentsController'::class, 'PageComponentsEditPage']);
+    // 修改頁面元件
+    Route::name('PageComponentsEdit')->put('pages/{pages_id}/edit/{page_components_id}', ['App\Http\Controllers\PageComponentsController'::class, 'PageComponentsEdit']);
+    // 刪除頁面元件
+    Route::name('PageComponentsDelete')->delete('pages/{pages_id}/delete/{page_components_id}', ['App\Http\Controllers\PageComponentsController'::class, 'PageComponentsDelete']);
+
 });
+
+// 顯示畫面
+Route::name('PagesPageView')->get('{url}', ['App\Http\Controllers\PageController'::class, 'PagesPageView']);
