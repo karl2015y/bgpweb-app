@@ -32,12 +32,12 @@
             @yield('body')
         </main>
     </div>
-    <div class="flex gap-2 text-brown font-semibold mt-4">
-        <a href="#">退款政策</a>
-        <a href="#">運送政策</a>
-        <a href="#">隱私政策</a>
-        <a href="#">服務條款</a>
-    </div>
+    <footer class="flex gap-2 text-brown font-semibold mt-4">
+        <a href="#refund" v-on:click="openIframe('/refund')">退款政策</a>
+        <a href="#deliver" v-on:click="openIframe('/deliver')">運送政策</a>
+        <a href="#privacy-policy" v-on:click="openIframe('/privacy-policy')">隱私政策</a>
+        <a href="#servicepolicy" v-on:click="openIframe('/servicepolicy')">服務條款</a>
+    </footer>
 
 
 
@@ -61,6 +61,32 @@
                         left: 0,
                         behavior: 'smooth'
                     });
+                },
+                openIframe: function(url) {
+                    Swal.fire({
+                        html: `<iframe class="w-full" style="height: calc(100vh - 260px);" src="${url}"></iframe>`,
+                        showCancelButton: false,
+                        confirmButtonText: '關閉',
+                        confirmButtonColor: '#5B5B5B',
+                    })
+                }
+            },
+
+        })
+
+
+        var app2 = new Vue({
+
+            el: 'footer',
+
+            methods: {
+                openIframe: function(url) {
+                    Swal.fire({
+                        html: `<iframe class="w-full" style="height: calc(100vh - 260px);" src="${url}"></iframe>`,
+                        showCancelButton: false,
+                        confirmButtonText: '關閉',
+                        confirmButtonColor: '#5B5B5B',
+                    })
                 }
             },
 
