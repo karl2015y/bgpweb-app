@@ -50,12 +50,10 @@
     <script type="text/javascript">
         mixins.push({
             data: function() {
-                const ilp = document.body.scrollHeight > window.innerHeight;
-                console.log('is_scroll_on_bottom', ilp)
                 return {
                     footer: {
                         is_scroll_on_bottom: false,
-                        is_long_page: ilp,
+                        is_long_page: true,
                     },
                 };
             },
@@ -96,7 +94,12 @@
                     })
 
                 }
-            }
+            },
+            mounted: function() {
+                this.is_long_page = document.body.scrollHeight > window.innerHeight;
+                console.log('is_scroll_on_bottom', this.is_long_page)
+
+            },
 
         })
     </script>
