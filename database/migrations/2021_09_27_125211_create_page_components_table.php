@@ -15,6 +15,8 @@ class CreatePageComponentsTable extends Migration
     {
         Schema::create('page_components', function (Blueprint $table) {
             $table->id();
+            // 元件排序
+            $table->string('index');
             // 元件名稱
             $table->string('name');
             // 元件資料

@@ -173,8 +173,12 @@ class ComponentController extends Controller
     }
 
     // 預覽元件頁
-    public function ComponentsPreviewPage()
+    public function ComponentsPreviewPage($components_id)
     {
-        return view('admin.component.ComponentsPreviewPage');
+        $component = Components::where('id', $components_id)->first();
+        $data=[
+            'component' => $component
+        ];
+        return view('admin.component.ComponentsPreviewPage', $data);
     }
 }

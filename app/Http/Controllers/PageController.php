@@ -112,8 +112,22 @@ class PageController extends Controller
                             ->with('message', $message);
     }
     // 顯示畫面
-    public function PagesPageView()
+    public function PagesPageView($url)
     {
-        return view('admin.page.PagesPageView');
+        $page = Page::where('url', $url)->with('PageComponents.Component')->first();
+
+        foreach ($page->pageComponents as $pc) {
+            if($pc->data=="{}"){
+                $pc->data=null;
+            }else{
+                $pc->data = json_decode($pc->data);
+            }
+        //    dd($pc->data);
+        }
+        $data = [
+            'page' => $page
+        ];
+        // return $data;
+        return view('admin.page.PagesPageView', $data);
     }
 }

@@ -11,6 +11,6 @@ class Page extends Model
     protected $guarded = [];
     public function PageComponents()
     {
-        return $this->hasMany('App\Models\PageComponent');
+        return $this->hasMany('App\Models\PageComponent', 'pages_id')->orderBy('index');
     }
 }

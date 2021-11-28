@@ -40,12 +40,12 @@
 
         <!-- sidebar -->
         <div
-            class="sidebar bg-white text-gray-500 w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out">
+            class="bg-gray-700 sidebar text-gray-50 w-64 space-y-6 py-7 pl-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out">
 
             <!-- logo -->
             <div class="flex">
                 <div class="text-white flex items-center space-x-2 px-4">
-                    <span class="text-black font-bold text-4xl text-center">BGP STudio </span>
+                    <span class="text-gray-50 font-bold text-4xl text-center">BGP STudio </span>
                     {{-- <img class="w-full h-full" src="/asset/img/logo-row.png" alt=""> --}}
                 </div>
                 {{-- <a href="/admin" class="text-white flex items-center space-x-2 px-4"> --}}
@@ -64,44 +64,50 @@
 
 
             <!-- nav -->
-            <nav>
+            <nav class="font-bold">
                 <a href="{{ route('PagesPage') }}" id="PagesPage"
-                    class="block py-2.5 px-4 rounded transition duration-200 hover:bg-green-400 hover:text-white">
+                    class="block py-2 my-2 px-4 rounded-l-2xl transition duration-200 hover:bg-green-400 hover:text-white">
                     頁面管理
                 </a>
                 <a href="{{ route('MenusPage') }}" id="MenusPage"
-                    class="block py-2.5 px-4 rounded transition duration-200 hover:bg-green-400 hover:text-white">
+                    class="block py-2 my-2 px-4 rounded-l-2xl transition duration-200 hover:bg-green-400 hover:text-white">
                     Menu管理
                 </a>
                 <a href="{{ route('ComponentsPage') }}" id="ComponentsPage"
-                    class="block py-2.5 px-4 rounded transition duration-200 hover:bg-green-400 hover:text-white">
+                    class="block py-2 my-2 px-4 rounded-l-2xl transition duration-200 hover:bg-green-400 hover:text-white">
                     元件管理
                 </a>
-                <div>
-                    <span class="block bg-gray-50 py-2.5 px-4 rounded ">
-                        數據總攬
-                    </span>
-                    <div class="pl-3 bg-gray-50 hover:bg-green-400 hover:text-white">
-                        <a href="#" class="block py-2.5 px-4 rounded transition duration-200">
-                            點數發放列表
-                        </a>
-                    </div>
 
-                    <div class="pl-3 bg-gray-50 hover:bg-green-400 hover:text-white ">
-                        <a href="#" class="block py-2.5 px-4 rounded transition duration-200 ">
-                            兌換券紀錄列表
-                        </a>
-                    </div>
-                    <div class="pl-3 bg-gray-50 hover:bg-green-400 hover:text-white ">
-                        <a href="#" class="block py-2.5 px-4 rounded transition duration-200">
-                            民眾基本資料列表
-                        </a>
-                    </div>
-                </div>
+                <a href="{{ route('admin_member.index') }}" id="admin_member.index"
+                    class="block py-2 my-2 px-4 rounded-l-2xl transition duration-200 hover:bg-green-400 hover:text-white">
+                    會員管理
+                </a>
 
+                <a href="{{ route('admin_product_category.index') }}" id="admin_product_category.index"
+                    class="block py-2 my-2 px-4 rounded-l-2xl transition duration-200 hover:bg-green-400 hover:text-white">
+                    商品管理
+                </a>
+
+                <a href="{{ route('ordersPage') }}" id="ordersPage"
+                    class="block py-2 my-2 px-4 rounded-l-2xl transition duration-200 hover:bg-green-400 hover:text-white">
+                    訂單管理
+                </a>
+
+                <a href="{{ route('coupon.index') }}" id="coupon.index"
+                    class="block py-2 my-2 px-4 rounded-l-2xl transition duration-200 hover:bg-green-400 hover:text-white">
+                    優惠碼管理
+                </a>
+                <a href="{{ route('contact.index') }}" id="contact.index"
+                    class="block py-2 my-2 px-4 rounded-l-2xl transition duration-200 hover:bg-green-400 hover:text-white">
+                    聯絡管理
+                </a>
+                <a href="{{ route('admin_setting.index') }}" id="admin_setting.index"
+                    class="block py-2 my-2 px-4 rounded-l-2xl transition duration-200 hover:bg-green-400 hover:text-white">
+                    系統設定
+                </a>
 
                 <a href="#"
-                    class="block py-2.5 px-4 rounded transition duration-200 hover:bg-green-400 hover:text-white">
+                    class="block py-2.5 px-4 rounded-l-2xl transition duration-200 hover:bg-green-400 hover:text-white">
                     登出
                 </a>
             </nav>
@@ -131,8 +137,8 @@
     {{-- Menu 提醒 --}}
     <script type="text/javascript">
         if (document.getElementById('{{ \Request::route()->getName() }}')) {
-            document.getElementById('{{ \Request::route()->getName() }}').className +=
-                ' rounded bg-green-200 text-white shadow-inner'
+            document.getElementById('{{ \Request::route()->getName() }}').className =
+                "bg-gray-50 block duration-200 hover:bg-green-400 hover:text-white px-4 py-2.5 rounded-l-2xl text-black transition"
         }
     </script>
 

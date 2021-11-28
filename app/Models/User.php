@@ -41,4 +41,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+    /**
+     * 取得用戶的訂單
+     */
+    public function Orders()
+    {
+        return $this->hasMany('App\Models\Order', 'receiver_email', 'email')->with('Items')->orderBy('id', 'desc');;
+    }
 }

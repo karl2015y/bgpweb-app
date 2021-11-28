@@ -64,7 +64,9 @@ table {
 @tailwind components;
 @tailwind utilities;
 
-
+html{
+	font-family: 'Noto Sans TC', sans-serif;
+}
 .btn {
 @apply font-bold py-2 px-4 rounded ;
 }
@@ -102,3 +104,80 @@ table {
 .btn-fourth:hover {
     @apply bg-gray-700;
 }
+
+
+/* CHECKBOX TOGGLE SWITCH */
+/* @apply rules for documentation, these do not work as inline style */
+.toggle-checkbox:checked {
+	@apply: right-0 border-green-400;
+	right: 0;
+	border-color: #68D391;
+}
+.toggle-checkbox:checked + .toggle-label {
+	@apply: bg-green-400;
+	background-color: #68D391;
+}
+
+
+/* 動畫 */
+.scroll-top-enter-active {
+	-webkit-animation-name: fadeInUp;
+	animation-name: fadeInUp;
+}
+
+.scroll-top-leave-active {
+	-webkit-animation-name: fadeOutDown;
+	animation-name: fadeOutDown;
+}
+
+
+/* 動畫設定 */
+@-webkit-keyframes fadeInUp {
+	from {
+	  opacity: 0;
+	  -webkit-transform: translate3d(0, 100%, 0);
+	  transform: translate3d(0, 100%, 0);
+	}
+  
+	to {
+	  opacity: 1;
+	  -webkit-transform: translate3d(0, 0, 0);
+	  transform: translate3d(0, 0, 0);
+	}
+  }
+  @keyframes fadeInUp {
+	from {
+	  opacity: 0;
+	  -webkit-transform: translate3d(0, 100%, 0);
+	  transform: translate3d(0, 100%, 0);
+	}
+  
+	to {
+	  opacity: 1;
+	  -webkit-transform: translate3d(0, 0, 0);
+	  transform: translate3d(0, 0, 0);
+	}
+  }
+
+  @-webkit-keyframes fadeOutDown {
+	from {
+	  opacity: 1;
+	}
+  
+	to {
+	  opacity: 0;
+	  -webkit-transform: translate3d(0, 100%, 0);
+	  transform: translate3d(0, 100%, 0);
+	}
+  }
+  @keyframes fadeOutDown {
+	from {
+	  opacity: 1;
+	}
+  
+	to {
+	  opacity: 0;
+	  -webkit-transform: translate3d(0, 100%, 0);
+	  transform: translate3d(0, 100%, 0);
+	}
+  }

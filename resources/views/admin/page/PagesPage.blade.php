@@ -60,7 +60,7 @@
                     @method('DElETE')
                     <button onClick='return confirmSubmit()' class="btn btn-third btn-rwd">刪除</button>
                 </form>
-                <a href="{{ route('PagesPage', $page->id) }}" class="btn btn-main btn-rwd">管理元件</a>
+                <a href="{{ route('PageComponentsPage', $page->id) }}" class="btn btn-main btn-rwd">管理元件</a>
 
             </div>
 

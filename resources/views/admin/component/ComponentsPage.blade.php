@@ -75,13 +75,13 @@
             <div class="lg:border-r border-solid w-full lg:w-1/4 text-center border-gray-200">
                 <div class="flex justify-between lg:block mt-1.5">
                     <div class="lg:hidden font-bold">元件顯示名稱</div>
-                    <div>{{ $component->name }}</div>
+                    <div>{{ $component->show_name }}</div>
                 </div>
             </div>
             <div class="lg:border-r border-solid w-full lg:w-1/4 text-center border-gray-200">
                 <div class="flex justify-between lg:block mt-1.5">
                     <div class="lg:hidden font-bold">元件程式名稱</div>
-                    <div>{{ $component->show_name }}</div>
+                    <div>{{ $component->name }}</div>
                 </div>
             </div>
             <div class="lg:border-r border-solid w-full lg:w-1/4 text-center border-gray-200">
@@ -104,7 +104,7 @@
             </div>
 
             <div class="w-full lg:w-1/4 text-center border-gray-200">
-                <a href="{{ route('ComponentsPreviewPage',  $component->id ) }}" class="btn btn-fourth btn-rwd">預覽</a>
+                <a target="_blank" href="{{ route('ComponentsPreviewPage',  $component->id ) }}" class="btn btn-fourth btn-rwd">預覽</a>
                 <a href="{{ route('ComponentsEditPage',  $component->id ) }}" class="btn btn-sec btn-rwd">修改</a>
                 <form action="{{ route('ComponentsDelete',  $component->id ) }}" method="post" class="inline leading-5">
                     @csrf

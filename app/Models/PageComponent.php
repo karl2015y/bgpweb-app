@@ -11,11 +11,11 @@ class PageComponent extends Model
     protected $guarded = [];
     public function Page()
     {
-        return $this->belongsTo('App\Models\Page');
+        return $this->belongsTo('App\Models\Page', 'pages_id');
     }
     public function Component()
     {
-        return $this->belongsTo('App\Models\Components');
+        return $this->belongsTo('App\Models\Components', 'components_id');
     }
     public function Medias()
     {

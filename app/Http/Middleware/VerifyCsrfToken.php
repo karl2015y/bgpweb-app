@@ -13,5 +13,12 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
+        'admin/pics/upload',
+        'admin/pics/crop',
+        'admin/pics/wangeditor_upload',
+        'shop/GetUserChooseLogistcs',
+        'shop/checkoutCallback',
+        'shop/checkoutServerCallback',
+        
     ];
 }

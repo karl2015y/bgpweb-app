@@ -15,8 +15,8 @@ class CreateMediaTable extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->id();
-            // 媒體類型
-            $table->enum('type', ['image', 'video']);
+            // 媒體大小
+            $table->string('size');
             // 媒體連結
             $table->string('link');
             // 頁面元件id

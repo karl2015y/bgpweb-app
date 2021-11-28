@@ -16,26 +16,32 @@
         <div class=" p-5 bg-white rounded shadow">
             @csrf
             @method('PUT')
+
+
+
+
             <div>
-                <label for="name" class="font-bold">
+                <label for="show_name" class="font-bold">
                     <span class="text-red-500">*</span>
                     元件顯示名稱
                 </label>
-                <input placeholder="輸入元件的顯示名稱" name="name" value="{{ old('name', $component->name) }}"
+                <input placeholder="輸入元件的顯示名稱" name="show_name" value="{{ old('show_name', $component->show_name) }}"
+                    class="ml-2 px-4 py-3 leading-5 border rounded-md focus:outline-none focus:ring focus:border-blue-400 w-full lg:w-60"
+                    type="text" id="show_name" />
+            </div>
+
+
+            <div class="mt-3">
+                <label for="name" class="font-bold">
+                    <span class="text-red-500">*</span>
+                    元件程式名稱
+                </label>
+                <input placeholder="輸入元件對應的程式名稱" name="name" value="{{ old('name', $component->name) }}"
                     class="ml-2 px-4 py-3 leading-5 border rounded-md focus:outline-none focus:ring focus:border-blue-400 w-full lg:w-60"
                     type="text" id="name" />
             </div>
 
 
-            <div class="mt-3">
-                <label for="show_name" class="font-bold">
-                    <span class="text-red-500">*</span>
-                    元件程式名稱
-                </label>
-                <input placeholder="輸入元件對應的程式名稱" name="show_name" value="{{ old('show_name', $component->show_name) }}"
-                    class="ml-2 px-4 py-3 leading-5 border rounded-md focus:outline-none focus:ring focus:border-blue-400 w-full lg:w-60"
-                    type="text" id="show_name" />
-            </div>
 
 
             <div class="mt-3">
