@@ -27,6 +27,10 @@ class AdminOrderController extends Controller
             'CVS_UNIMARTC2C' => '7-ELEVEN 超商物流',
             'CVS_HILIFEC2C' => '萊爾富物流',
             'CVS_OKMARTC2C' => 'OK 超商',
+            'CVS_FAMI' => '全家物流',
+            'CVS_UNIMART' => '7-ELEVEN 超商物流',
+            'CVS_HILIFE' => '萊爾富物流',
+            'CVS_OKMART' => 'OK 超商',
         ];
     }
 
