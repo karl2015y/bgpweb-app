@@ -72,16 +72,6 @@
                     </div>
                 </div>
 
-                {{-- 會員IG --}}
-                <div
-                    class="border-b pb-2 mb-3 lg:pb-0 lg:mb-0 lg:border-b-0 lg:border-r border-solid w-full text-center border-gray-200">
-                    <div class="flex justify-between lg:block mt-1.5">
-                        <div class="lg:hidden font-bold whitespace-nowrap">會員IG</div>
-                        <div class=" flex justify-center text-gray-350">
-                            <span class="text-sm">{{ $user->name }}</span>
-                        </div>
-                    </div>
-                </div>
 
 
                 {{-- 會員帳號 --}}
@@ -96,11 +86,24 @@
                 </div>
 
 
+                {{-- 會員IG --}}
+                <div
+                    class="border-b pb-2 mb-3 lg:pb-0 lg:mb-0 lg:border-b-0 lg:border-r border-solid w-full text-center border-gray-200">
+                    <div class="flex justify-between lg:block mt-1.5">
+                        <div class="lg:hidden font-bold whitespace-nowrap">會員IG</div>
+                        <div class=" flex justify-center text-gray-350">
+                            <span class="text-sm">{{ $user->name }}</span>
+                        </div>
+                    </div>
+                </div>
+
+
+
                 <div
                     class="pb-2 mb-3 lg:pb-0 lg:mb-0 lg:border-b-0 lg:border-r border-solid w-full text-center border-gray-200 ">
                     <div class="flex justify-between lg:block mt-1.5">
                         <div class="text-gray-350  w-full">
-                            <a href="{{ route('ordersPage', ['email'=> $user->email]) }}">
+                            <a href="{{ route('ordersPage', ['email' => $user->email]) }}">
                                 <button class="btn btn-sec btn-rwd btn-sm  text-sm">銷售紀錄</button>
                             </a>
                         </div>

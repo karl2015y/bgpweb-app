@@ -32,16 +32,19 @@ class MemberCenterController extends Controller
     {
         $validatedData = $request->validate([
             'email' => 'required|email',
+            'name' => 'required',
             'password' => 'required|confirmed',
         ], [
             'email.required' => ':attribute為必填',
             'email.email' => ':attribute的格式錯誤',
             'password.required' => ':attribute為必填',
             'password.confirmed' => ':attribute重複錯誤',
+            'name.required' => ':attribute為必填',
 
         ], [
             'email' => '電子信箱(帳號)',
             'password' => '密碼',
+            'name' => 'Instagram帳號(IG)',
         ]);
         $rep = $request->input();
 
@@ -50,7 +53,7 @@ class MemberCenterController extends Controller
         if ($user == NULL) {
             // 新增至User表
             $user = 'App\Models\User'::create([
-                'name' => explode("@", $validatedData['email'])[0],
+                'name' => $validatedData['name'],
                 'email' => $validatedData['email'],
                 'password' => bcrypt($validatedData['password'])
             ]);

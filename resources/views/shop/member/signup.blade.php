@@ -12,6 +12,10 @@
                         class="block border border-grey-light w-full p-3 rounded mb-4" name="email"
                         placeholder="Email電子信箱(帳號)" />
 
+                         <input value="{{ old('name') }}" type="text"
+                        class="block border border-grey-light w-full p-3 rounded mb-4" name="email"
+                        placeholder="Instagram帳號(IG)" />
+
                     <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4" name="password"
                         placeholder="請設定查詢訂單時的密碼" />
                     <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4"
@@ -25,10 +29,10 @@
                 <div class="text-center text-sm text-gray-350 mt-4">
                     送出前,
                     請先確定是否已經了解我們的<br>
-                    <a class="underline border-b border-grey-dark text-gray-350" href="#">
+                    <a class="underline border-b border-grey-dark text-gray-350" href="#" v-on:click="openIframe('/servicepolicy')">
                         服務條款
                     </a> 與
-                    <a class="underline border-b border-grey-dark text-gray-350" href="#">
+                    <a class="underline border-b border-grey-dark text-gray-350" href="#" v-on:click="openIframe('/privacy-policy')">
                         隱私權條款
                     </a>
                 </div>
@@ -47,7 +51,14 @@
                 return {};
             },
             methods: {
-
+                openIframe: function(url) {
+                    Swal.fire({
+                        html: `<iframe class="w-full" style="height: calc(100vh - 260px);" src="${url}"></iframe>`,
+                        showCancelButton: false,
+                        confirmButtonText: '關閉',
+                        confirmButtonColor: '#5B5B5B',
+                    })
+                }
             },
             created: function() {
 
