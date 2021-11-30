@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
 class MemberCenterController extends Controller
 {
     public function registerPage(Request $request)
@@ -212,6 +213,15 @@ class MemberCenterController extends Controller
     public function payAgain($order_id)
     {
         $order = 'App\Models\Order'::where('id', $order_id)->where('status', 'create')->with('Items')->first();
+        if($order == null){
+            $message_title = "該筆訂單已經付款過或是過期了";
+            $message_type = "error";
+            $message = "請先登入，我們幫您做個確認";
+            return redirect()->route('loginPage')
+                ->with('message_title', $message_title)
+                ->with('message_type', $message_type)
+                ->with('message', $message);
+        }
         $items_name = '';
         foreach ($order->Items as $item) {
             // $items_name = $items_name . $item->product_item_name .' '. $item->product_item_price .'元 X'. $item->count .'#';
