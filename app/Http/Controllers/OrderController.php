@@ -164,7 +164,7 @@ class OrderController extends Controller
 
         $order =  (new CartController())->getCartDatas();
         $order->ship_type = 'owner_shipping';
-        $order->ship_cost = $this->SC->get($order->ship_type)?? 60;
+        $order->ship_cost = (new SettingController)->get($order->ship_type)?? 60;
         $order->receiver_name = $request->name;
         $order->receiver_phone = $request->phone;
         $order->receiver_address = $request->zipcode . $request->county . $request->district . $request->address;
