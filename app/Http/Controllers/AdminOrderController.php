@@ -215,13 +215,12 @@ class AdminOrderController extends Controller
         $details = [
             'title' => 'DearMe 出貨通知(您的支持就是我們最大的動力!!!!)',
             'user' => 'App\Models\User'::where('email', $order['receiver_email'])->first(),
+            'register_link' =>  route('registerPage', ['email' => $order['receiver_email'], 'code'=> $order->session_id]), 
             'orders_link' => route('myOrderPage'), 
             'order' => $order,
             'order_items' => $order->Items,
         ];
-        if($details['user']){
-            $details['register_link'] = route('registerPage', ['email' => $order['receiver_email'], 'code'=> $details['user']->session_id]);
-        }
+ 
 
         $details['order']->status_text=$this->status_list[$details['order']->status];
         $details['order']->ship_type_text=$this->ship_types[$details['order']->ship_type];
