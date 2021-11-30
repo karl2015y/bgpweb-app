@@ -59,6 +59,21 @@
                 @endif
             </div>
         </div>
+
+        <div style="display: flex;justify-content: space-between;border-bottom: solid #ededed 1px;text-align: left;">
+            <div style="width: 50%;">買家備註</div>
+            <div style="width: 50%;">
+                {{ $details['order']->receiver_note == '' ? '無' : $details['order']->receiver_note }}
+            </div>
+        </div>
+    </div>
+
+    <div style="display: flex;justify-content: space-between;border-bottom: solid #ededed 1px;text-align: left;">
+        <div style="width: 50%;">賣家備註</div>
+        <div style="width: 50%;">
+            {{ $details['order']->note == '' ? '無' : $details['order']->note }}
+        </div>
+    </div>
     </div>
     </p>
 
