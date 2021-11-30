@@ -2,7 +2,7 @@
 
 @section('body')
     <div class="bg-grey-lighter flex flex-col max-h-96 my-8 sm:mt-12">
-        <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+        <div class="z-10 container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
             <div class="bg-white border-gray-50 border-solid p-6 rounded sm:border sm:shadow-md text-black w-full">
                 <h1 class="mb-8 text-3xl text-center">填寫密碼，後續就不需再次驗證</h1>
 
