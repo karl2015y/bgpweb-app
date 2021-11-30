@@ -9,7 +9,7 @@ class HomePageController extends Controller
     public function HomePage(Request $request){
         // $data = [];
         // return view('home.index', $data);
-        $request->session()->save();
+        $request->session()->reflash();
         return redirect('/home');
     }
 }
