@@ -56,7 +56,8 @@ class ECPayPaymentController extends Controller
             }
             $order->trade_no = $response['TradeNo']; //綠界訂單編號
             $order->pay_at = 'Carbon\Carbon'::now();
-            $order->status = 'prePaid';
+            $order->status = $order->status == 'paid'?'paid':'prePaid';
+            // $order->status = 'prePaid';
             $order->save();
             // Log::info('訂單編號' . $order->id . '付款成功');
             
