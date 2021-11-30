@@ -222,9 +222,42 @@ class OrderController extends Controller
             ]);
         }
         $order->save();
+
+        $details = [
+            'title' => 'DearMe 下單通知(內有連結可以直接付款)',
+            'user' => 'App\Models\User'::where('email', $order['receiver_email'])->first(),
+            'register_link' => route('registerPage', ['email' => $order['receiver_email']]), 
+            'orders_link' => route('myOrderPage'), 
+            'order' => $order,
+            'order_items' => $order->Items,
+        ];
+        $status_list = [
+            'create' => '訂單已建立，已為您保留商品，請在三日內付款。',
+            'prePaid' => '已付款(銀行端查核中)',
+            'paid' => '已付款，準備寄出。',
+            'delay' => '超時支付',
+            'preOut' => '揀貨中，準備寄出。',
+            'outed' => '已出貨',
+        ];
+        $ship_types = [
+            'owner_shipping' => '基本物流',
+            'HOME_TCAT' => '黑貓物流',
+            'HOME_ECAN' => '宅配通',
+            'CVS_FAMIC2C' => '全家物流',
+            'CVS_UNIMARTC2C' => '7-ELEVEN 超商物流',
+            'CVS_HILIFEC2C' => '萊爾富物流',
+            'CVS_OKMARTC2C' => 'OK 超商',
+        ];
+        $details['order']->status_text=$status_list[$details['order']->status];
+        $details['order']->ship_type_text=$ship_types[$details['order']->ship_type];
+
+        '\Mail'::to($order['receiver_email'])->send(new \App\Mail\MemberProductDetailMail($details));
+
+
         session()->regenerate();
 
         $items_name = '';
+
         foreach ($order->Items as $item) {
             // $items_name = $items_name . $item->product_item_name .' '. $item->product_item_price .'元 X'. $item->count .'#';
             $items_name = $items_name . $item->product_item_name .' X'. $item->count .'#';

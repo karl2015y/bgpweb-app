@@ -89,15 +89,21 @@
                 scroll_top_offset: function(pageYOffset) {
                     const vm = this;
                     vm.$nextTick(function() {
-                        vm.footer.is_scroll_on_bottom = (window.innerHeight + pageYOffset)+10 >= document
+                        vm.footer.is_scroll_on_bottom = (window.innerHeight + pageYOffset) + 10 >=
+                            document
                             .body.offsetHeight;
                     })
 
                 }
             },
             mounted: function() {
-                this.is_long_page = document.body.scrollHeight > window.innerHeight;
-                console.log('is_scroll_on_bottom', this.is_long_page)
+                const vm = this;
+                vm.$nextTick(() => {
+
+                    vm.footer.is_long_page = document.body.scrollHeight > window.innerHeight;
+                    console.log('is_long_page', this.footer.is_long_page)
+
+                })
 
             },
 

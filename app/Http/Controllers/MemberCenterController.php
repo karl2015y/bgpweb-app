@@ -10,11 +10,22 @@ class MemberCenterController extends Controller
     public function registerPage(Request $request)
     {
         $data = [];
-        if ($request->exists('email')) {
+        try {
             $data['email'] = $request->input('email');
+            if ($data['email'] == 'App\Models\Order'::where('session_id', $request->input('code'))->first()->receiver_email) {
+                return view('shop.member.signup', $data);
+            }else{
+                $request->input('error')['toerror'];
+            }
+        } catch (\Throwable $th) {
+            $message_title = "失敗";
+            $message_type = "error";
+            $message = "資料比對錯誤，如持續出現該錯誤，請直接連絡客服，工程師打屁屁";
+            return redirect('/')
+                ->with('message_title', $message_title)
+                ->with('message_type', $message_type)
+                ->with('message', $message);
         }
-
-        return view('shop.member.signup', $data);
     }
 
     public function register(Request $request)
@@ -99,6 +110,14 @@ class MemberCenterController extends Controller
         // ];
         $data['isRegistered'] = 'App\Models\User'::where('email', $rep['email'])->count() > 0;
 
+        if ($data['hasHistory'] &&  !$data['isRegistered']) {
+            $details = [
+                'link' => route('registerPage', ['email' => $rep['email'], 'code' => 'App\Models\Order'::where('receiver_email', $rep['email'])->first()->session_id]),
+            ];
+            '\Mail'::to($rep['email'])->send(new \App\Mail\MemberSignUpMail($details));
+            // '\Mail'::to('karl2015y@gmail.com')->send(new \App\Mail\MemberSignUpMail($details));
+
+        }
 
         return view('shop.member.login', $data);
     }
@@ -183,12 +202,13 @@ class MemberCenterController extends Controller
     }
 
 
-    public function payAgain($order_id){
+    public function payAgain($order_id)
+    {
         $order = 'App\Models\Order'::where('id', $order_id)->where('status', 'create')->with('Items')->first();
         $items_name = '';
         foreach ($order->Items as $item) {
             // $items_name = $items_name . $item->product_item_name .' '. $item->product_item_price .'元 X'. $item->count .'#';
-            $items_name = $items_name . $item->product_item_name .' X'. $item->count .'#';
+            $items_name = $items_name . $item->product_item_name . ' X' . $item->count . '#';
         }
 
 

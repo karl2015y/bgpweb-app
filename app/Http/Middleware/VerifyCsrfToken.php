@@ -19,6 +19,6 @@ class VerifyCsrfToken extends Middleware
         'shop/GetUserChooseLogistcs',
         'shop/checkoutCallback',
         'shop/checkoutServerCallback',
-        
+        'member/payAgain/*'
     ];
 }
