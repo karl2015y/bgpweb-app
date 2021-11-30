@@ -91,11 +91,15 @@ class ECPayPaymentController extends Controller
             $details = [
                 'title' => 'DearMe 已付款通知(馬上就可以拿到商品啦 開勳~~)',
                 'user' => 'App\Models\User'::where('email', $order['receiver_email'])->first(),
-                'register_link' => route('registerPage', ['email' => $order['receiver_email']]), 
                 'orders_link' => route('myOrderPage'), 
                 'order' => $order,
                 'order_items' => $order->Items,
             ];
+
+            if($details['user']){
+                $details['register_link'] = route('registerPage', ['email' => $order['receiver_email'], 'code'=> $details['user']->session_id]);
+            }
+
             $status_list = [
                 'create' => '訂單已建立，已為您保留商品，請在三日內付款。',
                 'prePaid' => '已付款(銀行端查核中)',

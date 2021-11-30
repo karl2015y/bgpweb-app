@@ -87,7 +87,7 @@ Route::prefix('member')->group(function () {
     // 訂單資訊
     Route::name('myOrderPage')->get('/myOrderPage', ['App\Http\Controllers\MemberCenterController'::class, 'myOrderPage']);
     // 重新付款
-    Route::name('payAgain')->post('/payAgain/{order_id}', ['App\Http\Controllers\MemberCenterController'::class, 'payAgain']);
+    Route::name('payAgain')->match(['get', 'post'],'/payAgain/{order_id}', ['App\Http\Controllers\MemberCenterController'::class, 'payAgain']);
 });
 
 
