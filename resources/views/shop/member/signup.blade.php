@@ -13,7 +13,7 @@
                         placeholder="Email電子信箱(帳號)" />
 
                          <input value="{{ old('name') }}" type="text"
-                        class="block border border-grey-light w-full p-3 rounded mb-4" name="email"
+                        class="block border border-grey-light w-full p-3 rounded mb-4" name="name"
                         placeholder="Instagram帳號(IG)" />
 
                     <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4" name="password"
