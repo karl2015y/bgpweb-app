@@ -280,7 +280,7 @@ class ECPayLogisticsController extends Controller
         // return $order;
         $order->logistics_id = $res['TempLogisticsID'];
         $order->ship_type = $res['LogisticsType'] . "_" . $res['LogisticsSubType'];
-        $order->ship_cost = 60;
+        $order->ship_cost = $this->SC->get($order->ship_type)?? 60;
         $order->receiver_name = $res['ReceiverName'];
         $order->receiver_phone = $res['ReceiverCellPhone'];
         if ($res['LogisticsType'] == 'CVS') {
