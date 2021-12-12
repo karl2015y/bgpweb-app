@@ -33,28 +33,44 @@ class OrderController extends Controller
     public function checkCouponCanUse($coupon_code)
     {
         $now = 'Carbon\Carbon'::now();
-        $coupon = 'App\Models\Coupon'::where('code', $coupon_code)->where('start_at', '<=', $now)->where('end_at', '>', $now)->first();
-        if ($coupon == null) {
+        $coupons = 'App\Models\Coupon'::where('code', $coupon_code)->where('start_at', '<=', $now)->where('end_at', '>', $now)->orderBy('number')->get();
+        if (count($coupons) == 0) {
             return ['status' => false, 'msg' => '序號不存在，或該優惠券時間尚未開放'];
         }
         $order =  (new CartController())->getCartDatas();
-        if ($order->all_product_price < $coupon->minimum_price) {
-            return ['status' => false, 'msg' => '該優惠券最低需要消費' . $coupon->minimum_price . '元'];
-        }
-        // 確認是否有特定商品
-        $product_id_in_order = false;
-        if ($coupon->product_id) {
-            foreach ($order->Items as $item) {
-                if ($item->Product_Item->Product->id == $coupon->product_id) {
-                    $product_id_in_order = true;
-                    break;
-                }
+        // 最低需要消費
+        $coupons_pass_minimum_price=[];
+        foreach ($coupons as $coupon) {
+            if ($order->all_product_price >= $coupon->minimum_price) {
+                array_push($coupons_pass_minimum_price, $coupon);
             }
         }
-        if ($coupon->product_id && !$product_id_in_order) {
-            return ['status' => false, 'msg' => '該優惠券需要搭配特定商品使用，請詳閱以下說明：' . $coupon->description];
+        if (count($coupons_pass_minimum_price) == 0) {
+            return ['status' => false, 'msg' => '該優惠券最低需要消費' . $coupons[0]->minimum_price . '元'];
         }
-        return ['status' => true, 'coupon' => $coupon];
+
+        // 確認是否有特定商品
+        $coupons_pass_only_product=[];
+        foreach ($coupons_pass_minimum_price as $coupon) {
+            if ($coupon->product_id) {
+                foreach ($order->Items as $item) {
+                    if ($item->Product_Item->Product->id == $coupon->product_id) {
+                        array_push($coupons_pass_only_product, $coupon);
+                        break;
+                    }
+                }
+            }else{
+                array_push($coupons_pass_only_product, $coupon);
+            }
+        }
+
+        if (count($coupons_pass_only_product) == 0) {
+            return ['status' => false, 'msg' => '該優惠券需要搭配特定商品使用'];
+        }
+
+
+        return ['status' => true, 'coupon' => end($coupons_pass_only_product)];
+
     }
     // 計算優惠眷
     public function computCoupon($coupon, $order)
@@ -164,7 +180,7 @@ class OrderController extends Controller
 
         $order =  (new CartController())->getCartDatas();
         $order->ship_type = 'owner_shipping';
-        $order->ship_cost = (new SettingController)->get($order->ship_type)?? 60;
+        $order->ship_cost = (new SettingController)->get($order->ship_type) ?? 60;
         $order->receiver_name = $request->name;
         $order->receiver_phone = $request->phone;
         $order->receiver_address = $request->zipcode . $request->county . $request->district . $request->address;
@@ -199,21 +215,22 @@ class OrderController extends Controller
     }
 
 
-    public function payPage(Request $request){
+    public function payPage(Request $request)
+    {
 
         $validatedData = $request->validate([
             'email' => ['required', 'email'],
         ], [
-            'email.required' => '請務必填寫正確的:attribute，確保後續訂單資訊，能準確的傳達給您！',            
-            'email.email' => '請務必填寫正確的:attribute，確保後續訂單資訊，能準確的傳達給您！',            
+            'email.required' => '請務必填寫正確的:attribute，確保後續訂單資訊，能準確的傳達給您！',
+            'email.email' => '請務必填寫正確的:attribute，確保後續訂單資訊，能準確的傳達給您！',
         ], [
-            'email' => '訂單通知 Email',          
+            'email' => '訂單通知 Email',
         ]);
 
         $order =  (new CartController())->getCartDatas();
         $order->status = "create";
         $order->receiver_email = $request->email;
-        if($request->message){
+        if ($request->message) {
             $order->receiver_note = $request->message;
         }
         foreach ($order->Items as $item) {
@@ -226,8 +243,8 @@ class OrderController extends Controller
         $details = [
             'title' => 'DearMe 下單通知(內有連結可以直接付款)',
             'user' => 'App\Models\User'::where('email', $order['receiver_email'])->first(),
-            'register_link' =>  route('registerPage', ['email' => $order['receiver_email'], 'code'=> $order->session_id]), 
-            'orders_link' => route('myOrderPage'), 
+            'register_link' =>  route('registerPage', ['email' => $order['receiver_email'], 'code' => $order->session_id]),
+            'orders_link' => route('myOrderPage'),
             'order' => $order,
             'order_items' => $order->Items,
         ];
@@ -253,8 +270,8 @@ class OrderController extends Controller
             'CVS_HILIFE' => '萊爾富物流',
             'CVS_OKMART' => 'OK 超商',
         ];
-        $details['order']->status_text=$status_list[$details['order']->status];
-        $details['order']->ship_type_text=$ship_types[$details['order']->ship_type];
+        $details['order']->status_text = $status_list[$details['order']->status];
+        $details['order']->ship_type_text = $ship_types[$details['order']->ship_type];
 
         '\Mail'::to($order['receiver_email'])->send(new \App\Mail\MemberProductDetailMail($details));
 
@@ -265,7 +282,7 @@ class OrderController extends Controller
 
         foreach ($order->Items as $item) {
             // $items_name = $items_name . $item->product_item_name .' '. $item->product_item_price .'元 X'. $item->count .'#';
-            $items_name = $items_name . $item->product_item_name .' X'. $item->count .'#';
+            $items_name = $items_name . $item->product_item_name . ' X' . $item->count . '#';
         }
 
 
@@ -282,21 +299,20 @@ class OrderController extends Controller
     }
 
 
-    public function makeDelayOrderCountBack2Product(){
+    public function makeDelayOrderCountBack2Product()
+    {
         $deadline = 'Carbon\Carbon'::now()->subDays(3);
         // $deadline = 'Carbon\Carbon'::now()->subMinutes(1);
-        $orders = 'App\Models\Order'::where('updated_at', '<', $deadline)->where('status','create')->get();
+        $orders = 'App\Models\Order'::where('updated_at', '<', $deadline)->where('status', 'create')->get();
         foreach ($orders as $order) {
-            $order->update(['status'=>'delay']);
+            $order->update(['status' => 'delay']);
             foreach ($order->Items as $item) {
-                if($item->Product_Item){
+                if ($item->Product_Item) {
                     $item->Product_Item()->update([
                         'count' => $item->Product_Item->count + $item->count
                     ]);
                 }
-
             }
-
         }
     }
 }
