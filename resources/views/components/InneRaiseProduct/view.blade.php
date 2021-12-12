@@ -13,7 +13,7 @@
 
                 </div>
                 <div class="w-full lg:w-5/12 flex flex-col items-center justify-center">
-                    <h1 class="lg:mb-10 text-gray-550 text-3xl font-bold">inneRaise 素燃錠</h1>
+                    <h1 class="lg:mb-10 text-gray-550 text-3xl font-bold">{{$pc->data->name}}</h1>
                     <span class="my-2 lg:my-0 lg:mb-16">{{$pc->data->price}}</span>
                     <p class="my-2 lg:my-0 lg:mt-1.5 lg:mb-16 whitespace-pre-line text-gray-350">{{$pc->data->discription}}</p>
                    <span class="my-2 lg:my-0  lg:mt-1.5 text-gray-550"></span> 完整資訊 →
