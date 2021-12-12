@@ -100,7 +100,7 @@
                                 <div v-for="type in product_types" class="mb-2 flex items-center w-full">
                                     <span class="mr-3 w-3/12 ">@{{ type . name }}</span>
                                     <div class="relative w-full">
-                                        <select v-on:change="chooseProductItem()"
+                                        <select v-on:change="chooseProductItem()" :value="choose_product_item?choose_product_item.name:''"
                                             class="appearance-none border border-gray-350 focus:outline-none pl-3 pr-10 py-2 text-base w-full">
                                             <option value="" hidden>請選擇@{{ type . name }}</option>
                                             <option v-for="option in type.options.split(', ')" :value="option">
