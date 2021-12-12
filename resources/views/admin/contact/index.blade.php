@@ -172,12 +172,12 @@
                             <button
                             v-if="filter_target!='處理中'"
                                 v-on:click="check2Ing('{{ route('contact.update', [$contact->id]) }}')"
-                                class="btn btn-sec btn-rwd btn-sm  text-sm">處理中</button>
+                                class="btn btn-sec btn-rwd btn-sm  text-sm">切換成「處理中」</button>
 
                             <button
                                 v-if="filter_target!='已處理'"
                                 v-on:click="check2Done('{{ route('contact.update', [$contact->id]) }}')"
-                                class="btn bg-green-500 text-white btn-rwd btn-sm  text-sm">已處理</button>
+                                class="btn bg-green-500 text-white btn-rwd btn-sm  text-sm">切換成「已處理」</button>
 
 
                         </div>
@@ -270,7 +270,7 @@
                         }
                     })
                 },
-                check2Done: function(title, url) {
+                check2Done: function(url) {
                     const vm = this;
 
 

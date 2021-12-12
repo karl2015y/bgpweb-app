@@ -3,7 +3,7 @@
 @section('body')
     <div class="container mx-auto px-6">
         <h3 class="text-gray-700 text-2xl font-medium">商品分類</h3>
-        <span class="mt-3 text-sm text-gray-500">{{ $product_count }} 件商品</span>
+        <span class="mt-3 sm:mt-12 text-sm text-gray-500">{{ $product_count }} 件商品</span>
         <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
 
             @foreach ($categorys as $category)

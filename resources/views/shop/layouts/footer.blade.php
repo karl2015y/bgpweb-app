@@ -16,7 +16,7 @@
     <div class="bg-brown">
         <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
             <a href="/" class="flex title-font font-medium items-center md:justify-start justify-center text-gray-350">
-                <img class="w-32 h-auto" src="{{ $setting->get('sec_logo') }}" alt="DEARME">
+                <img class="w-72 sm:w-32 h-auto" src="{{ $setting->get('sec_logo') }}" alt="DEARME">
 
             </a>
             <p class="text-sm text-gray-350 sm:ml-6 sm:mt-0 mt-4">© 2021 DEARME
@@ -99,9 +99,12 @@
             mounted: function() {
                 const vm = this;
                 vm.$nextTick(() => {
+                    setTimeout(() => {
+                        vm.footer.is_long_page = document.body.scrollHeight > window
+                        .innerHeight;
+                        console.log('is_long_page', this.footer.is_long_page)
 
-                    vm.footer.is_long_page = document.body.scrollHeight > window.innerHeight;
-                    console.log('is_long_page', this.footer.is_long_page)
+                    }, 1000)
 
                 })
 

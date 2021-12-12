@@ -54,7 +54,7 @@
                 <select v-model="coupon_type" name="type"
                     class="px-2 py-1.5 rounded border-solid border border-gray-200 form-select mt-1 block w-full">
                     <option value="percent">打折</option>
-                    <option value="discount">折抵</option>
+                    <option value="discount">折抵現金</option>
                 </select>
             </label>
 
@@ -91,7 +91,7 @@
                 <span class="text-gray-700">最低消費金額</span>
                 <input name="minimum_price"
                     class="px-3 py-1 rounded border-solid border border-gray-200 form-input mt-1 block w-full"
-                    placeholder="888" value="" />
+                    placeholder="888" value="0" />
             </label>
 
             <label class="block text-left w-full mt-4">

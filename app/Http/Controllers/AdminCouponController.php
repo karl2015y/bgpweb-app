@@ -63,6 +63,26 @@ class AdminCouponController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'code' => 'required',
+            'title' => 'required',
+            'number' => 'required',
+            'minimum_price' => 'required',
+            
+        ], [
+            'code.required' => ':attribute為必填',
+            'title.required' => ':attribute為必填',
+            'number.required' => ':attribute為必填',
+            'minimum_price.required' => ':attribute為必填',
+          
+        ], [
+            'code' => '專屬折扣碼',
+            'title' => '優惠券名稱',
+            'number' => '折扣數',
+            'minimum_price' => '最低消費金額',
+        ]);
+
         $res = $request->input();
         $coupon = 'App\Models\Coupon'::create($res);
         $coupon->end_at = $coupon->end_at->addDay();

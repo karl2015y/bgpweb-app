@@ -41,14 +41,14 @@
                         <div class="flex justify-between">
                             {{-- 上一張圖片 --}}
                             <div @click.stop="nextOrLastPic('last')"
-                                class="cursor-pointer absolute bg-black bg-opacity-25 cursor-pointer lg:top-52 left-1 shadow-2xl text-white top-52">
+                                class="cursor-pointer absolute bg-black bg-opacity-25 cursor-pointer left-1 shadow-2xl text-white top-1/2 -mt-14 sm:-mt-16">
                                 <svg class="w-6 h-6 h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M15 19l-7-7 7-7"></path>
                                 </svg>
                             </div>
-                            <div class="mt-1 w-full overflow-x-hidden pb-3">
+                            <div class="h-32 mt-1 w-full overflow-x-hidden pb-3">
                                 <div ref="ProductPics" :style="`width:${product_pics_count*25}%;min-width: 100%;`"
                                     class="flex gap-1.5 mt-2">
                                     @foreach ($product->Imgs as $img)
@@ -72,7 +72,7 @@
                             </div>
                             {{-- 下一張圖片 --}}
                             <div @click.stop="nextOrLastPic('next')"
-                                class="cursor-pointer absolute bg-black bg-opacity-25 cursor-pointer lg:top-52 right-1 shadow-2xl text-white top-52">
+                                class="cursor-pointer absolute bg-black bg-opacity-25 cursor-pointer right-1 shadow-2xl text-white top-1/2 -mt-14 sm:-mt-16">
                                 <svg class="w-6 h-6 h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
@@ -88,7 +88,7 @@
                         </h1>
 
                         <div ref="product_option_div"
-                            class="h-full justify-around flex flex-col w-full items-center border-b-2 border-gray-100 mb-5">
+                            class="h-full justify-between sm:mt-12 flex flex-col w-full items-center border-b-2 border-gray-100 mb-5">
                             {{-- 品項說明 --}}
                             <div class="lg:gap-5 lg:items-start lg:text-left mb-6 text-center w-full sm:order-2"
                                 v-if="choose_product_item && choose_product_item.description">

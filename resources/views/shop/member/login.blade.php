@@ -35,7 +35,7 @@
 
                     </div>
 
-                    <div class="flex items-center justify-between">
+                     {{-- <div class="flex items-center justify-between">
                         <div class="flex items-center">
                             @if ($remember_me ?? false)
                                 <input id="remember-me" name="remember-me" type="checkbox" checked
@@ -54,14 +54,13 @@
                                 Forgot your password?
                             </a>
                         </div>
-                    </div>
-
-                    <div>
+                    </div>  --}}
+              <div>
                         <button type="submit"
-                            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-550 hover:bg-gray-350 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300">
                             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                 <!-- Heroicon name: solid/lock-closed -->
-                                <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
+                                <svg class="h-5 w-5 text-gray-350 group-hover:text-gray-400"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                     aria-hidden="true">
                                     <path fill-rule="evenodd"
@@ -69,9 +68,10 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </span>
-                            Sign in
+                            登入
                         </button>
                     </div>
+      
                 </form>
             @else
                 <form class="mt-8 space-y-6" action="" method="GET">
@@ -86,10 +86,10 @@
                     </div>
                     <div>
                         <button type="submit"
-                            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-550 hover:bg-gray-350 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300">
                             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                 <!-- Heroicon name: solid/lock-closed -->
-                                <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
+                                <svg class="h-5 w-5 text-gray-350 group-hover:text-indigo-400"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                     aria-hidden="true">
                                     <path fill-rule="evenodd"
@@ -97,7 +97,7 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </span>
-                            送出
+                            確認信箱
                         </button>
                     </div>
                 </form>

@@ -108,12 +108,12 @@
 
 @section('JS-content')
     @parent
-    <script src="https://unpkg.com/vue-agile"></script>
+    {{-- <script src="/plugins/VueAgile/VueAgile.min.js"></script> --}}
     <script type="text/javascript">
         var app = new Vue({
             el: '#app',
             components: {
-                agile: VueAgile
+                {{-- agile: VueAgile --}}
             },
             data: {
                 agile_datas: {

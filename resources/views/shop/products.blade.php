@@ -12,7 +12,7 @@
             <h3 class="inline text-gray-700 text-2xl font-medium">{{ $category->name }}</h3>
         @endif
 
-        <span class="block mt-3 text-sm text-gray-500">{{ $products->count() }} 件商品
+        <span class="block mt-3 mt-3 sm:mt-12 text-sm text-gray-500">{{ $products->count() }} 件商品
             @if ($keyword ?? false)
                 ，<a href="{{ route('productsPage') }}" class="text-blue-600">查看全部商品</a>
             @endif
@@ -40,8 +40,6 @@
                                 @endif
 
                             </p>
-                            <span class="text-gray-550 font-bold text-sm">立即購買</span>
-                            <hr class="w-6 mx-auto border-black mt-0.5">
                         </div>
                     </div>
 

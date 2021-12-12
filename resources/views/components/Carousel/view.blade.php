@@ -13,7 +13,7 @@
                     fles
                     @endif
                     
-                    mb-0 sm:mb-24 slide-{{ $pc->data->position }}-dots"
+                    mb-0 sm:mb-48 slide-{{ $pc->data->position }}-dots"
                         :nav-buttons="false" :autoplay-speed="5000" :speed="2500" fade="fade"
                         pause-on-hover="pause-on-hover" pause-on-dots-hover="pause-on-dots-hover" autoplay="autoplay">
                         {{-- <div class="slide relative">
@@ -67,29 +67,39 @@
 
 @section('CSS-content')
     @parent
-    <link rel="stylesheet" href="https://unpkg.com/vue-agile/dist/VueAgile.css">
+    <link rel="stylesheet" href="/plugins/VueAgile/VueAgile.css">
     <style>
         @media (min-width: 640px) {
             .agile__dots {
                 flex-direction: row !important;
             }
 
+            .slide-right-dots .agile__dots {
+                bottom: 2rem !important;
+                right: 2rem!important;;
+            }
+
+            .slide-left-dots .agile__dots {
+                bottom: 2rem!important;;
+                left: 2rem!important;;
+            }
+
         }
 
 
         .slide-right-dots .agile__dots {
-            bottom: .5rem;
-            right: .5rem;
+            bottom: 1rem;
+            right: 1rem;
             position: absolute;
-            gap: 0.25rem;
+            gap: 0.343rem;
             flex-direction: column;
         }
 
         .slide-left-dots .agile__dots {
-            bottom: .5rem;
-            left: .5rem;
+            bottom: 1rem;
+            left: 1rem;
             position: absolute;
-            gap: 0.25rem;
+            gap: 0.343rem;
             flex-direction: column;
         }
 
@@ -100,8 +110,8 @@
             background-color: #ADADAE;
             cursor: pointer;
             display: block;
-            height: .5rem;
-            width: .5rem;
+            height: .53125rem;
+            width: .53125rem;
             font-size: 0;
             line-height: 0;
             margin: 0;
@@ -132,7 +142,7 @@
 
 @section('JS-content')
     @parent
-    <script src="https://unpkg.com/vue-agile"></script>
+    <script src="/plugins/VueAgile/VueAgile.min.js"></script>
     <script type="text/javascript">
         mixins.push({
             components: {
