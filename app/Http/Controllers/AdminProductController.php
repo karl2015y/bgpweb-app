@@ -135,6 +135,14 @@ class AdminProductController extends Controller
     public function destroy($id)
     {
         $product = 'App\Models\product'::find($id);
+
+
+        $product->Items()->delete();
+        $product->Types()->delete();
+        foreach ($product->Imgs as $img) {
+            (new AdminProductImagesController())->destroy($img->id);
+        }
+
         $product->delete();
         $message_title = "成功";
         $message_type = "success";
