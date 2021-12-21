@@ -1,5 +1,5 @@
 @php
-$cart_datas = (new app\Http\Controllers\CartController())->getCartDatas();
+$cart_datas = (new App\Http\Controllers\CartController())->getCartDatas();
 @endphp
 <div v-on:click="cartOpen = !cartOpen" v-if="cartOpen"
     class="fixed bg-black bg-opacity-40 h-screen top-0 w-screen z-20">
