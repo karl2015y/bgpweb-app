@@ -82,7 +82,7 @@ class ECPayPaymentController extends Controller
 
 
 
-        $checkCode = $this->generate($serverPost, '5294y06JbISpM5x9', 'v77hoKGq4kWxNNIS');
+        $checkCode = $this->generate($serverPost, $this->SC->get('ecpay_HashKey'), $this->SC->get('ecpay_HashIV'));
         if ($checkMacValue ==  $checkCode) {
             $order = 'App\Models\Order'::find($serverPost['CustomField1']);
             $order->status = 'paid';
