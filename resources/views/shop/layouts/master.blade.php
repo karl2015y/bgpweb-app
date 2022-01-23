@@ -18,9 +18,9 @@ $setting = new \App\Http\Controllers\SettingController();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.all.min.js"></script>
-    <script src="https://unpkg.com/spacingjs" defer></script>
+    <script src="/plugins/vue2.js"></script>
+    <script src="/plugins/sweetalert2.all.min.js"></script>
+    {{-- <script src="https://unpkg.com/spacingjs" defer></script> --}}
     <script src="https://kit.fontawesome.com/8c0827fa7b.js" crossorigin="anonymous"></script>
     @yield('CSS-content')
 
