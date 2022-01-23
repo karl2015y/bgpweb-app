@@ -83,10 +83,10 @@ class ECPayLogisticsController extends Controller
             'GoodsAmount' => '20000',
 
             //是否代收貨款
-            'IsCollection' => 'N',
+            'IsCollection' => 'Y',
 
             //代收金額
-            //'CollectionAmount' => '20000',
+            'CollectionAmount' => '0',
 
             //商品名稱
             'GoodsName' => 'DearMe',
@@ -150,6 +150,9 @@ class ECPayLogisticsController extends Controller
 
             //是否允許選擇送達時間
             'EnableSelectDeliveryTime' => 'Y',
+            
+
+
 
             //廠商平台的會員ID   
             // 'EshopMemberID' => session()->getId(),
