@@ -22,22 +22,30 @@
             <p class="text-sm text-gray-350 sm:ml-6 sm:mt-0 mt-4">© 2021 DEARME
             </p>
             <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start gap-3">
-                <a href="{{ $setting->get('facebook_link') }}"
-                    class="{{ $setting->get('facebook_icon_color') }} hover:{{ $setting->get('facebook_icon_hover_color') }}">
-                    <i class="{{ $setting->get('facebook_icon') }}"></i>
-                </a>
-                <a href="{{ $setting->get('instagram_link') }}"
-                    class="{{ $setting->get('instagram_icon_color') }} hover:{{ $setting->get('instagram_icon_hover_color') }}">
-                    <i class="{{ $setting->get('instagram_icon') }}"></i>
-                </a>
-                <a href="{{ $setting->get('twitter_link') }}"
-                    class="{{ $setting->get('twitter_icon_color') }} hover:{{ $setting->get('twitter_icon_hover_color') }}">
-                    <i class="{{ $setting->get('twitter_icon') }}"></i>
-                </a>
-                <a href="{{ $setting->get('line_link') }}"
-                    class="{{ $setting->get('line_icon_color') }} hover:{{ $setting->get('line_icon_hover_color') }}">
-                    <i class="{{ $setting->get('line_icon') }}"></i>
-                </a>
+                @if ($setting->get('facebook_link'))
+                    <a href="{{ $setting->get('facebook_link') }}"
+                        class="{{ $setting->get('facebook_icon_color') }} hover:{{ $setting->get('facebook_icon_hover_color') }}">
+                        <i class="{{ $setting->get('facebook_icon') }}"></i>
+                    </a>
+                @endif
+                @if ($setting->get('instagram_link'))
+                    <a href="{{ $setting->get('instagram_link') }}"
+                        class="{{ $setting->get('instagram_icon_color') }} hover:{{ $setting->get('instagram_icon_hover_color') }}">
+                        <i class="{{ $setting->get('instagram_icon') }}"></i>
+                    </a>
+                @endif
+                @if ($setting->get('twitter_link'))
+                    <a href="{{ $setting->get('twitter_link') }}"
+                        class="{{ $setting->get('twitter_icon_color') }} hover:{{ $setting->get('twitter_icon_hover_color') }}">
+                        <i class="{{ $setting->get('twitter_icon') }}"></i>
+                    </a>
+                @endif
+                @if ($setting->get('line_link'))
+                    <a href="{{ $setting->get('line_link') }}"
+                        class="{{ $setting->get('line_icon_color') }} hover:{{ $setting->get('line_icon_hover_color') }}">
+                        <i class="{{ $setting->get('line_icon') }}"></i>
+                    </a>
+                @endif
             </span>
         </div>
     </div>
@@ -101,7 +109,7 @@
                 vm.$nextTick(() => {
                     setTimeout(() => {
                         vm.footer.is_long_page = document.body.scrollHeight > window
-                        .innerHeight;
+                            .innerHeight;
                         console.log('is_long_page', this.footer.is_long_page)
 
                     }, 1000)

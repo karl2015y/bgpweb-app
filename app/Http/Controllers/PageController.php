@@ -115,6 +115,10 @@ class PageController extends Controller
     public function PagesPageView($url)
     {
         $page = Page::where('url', $url)->with('PageComponents.Component')->first();
+        if(!$page){
+            abort(404);
+
+        }
 
         foreach ($page->pageComponents as $pc) {
             if($pc->data=="{}"){
