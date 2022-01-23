@@ -74,7 +74,7 @@
                     Menu管理
                 </a>
                 <a href="{{ route('ComponentsPage') }}" id="ComponentsPage"
-                    class="block py-2 my-2 px-4 rounded-l-2xl transition duration-200 hover:bg-green-400 hover:text-white">
+                    class="hidden block py-2 my-2 px-4 rounded-l-2xl transition duration-200 hover:bg-green-400 hover:text-white">
                     元件管理
                 </a>
 
