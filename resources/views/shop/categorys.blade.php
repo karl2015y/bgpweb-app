@@ -1,4 +1,5 @@
 @extends('shop.layouts.master')
+@section('title', 'Dearme 商品分類')
 
 @section('body')
     <div class="container mx-auto px-6">

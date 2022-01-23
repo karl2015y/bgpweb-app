@@ -1,5 +1,5 @@
 @extends('shop.layouts.master')
-
+@section('title', 'Dearme 商品列表')
 @section('body')
     <div class="container mx-auto px-6">
         @if ($category ?? false)

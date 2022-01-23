@@ -1,5 +1,8 @@
 @extends('shop.layouts.master')
 
+@section('title', 'Dearme '.$product->name)
+{{-- @section('description', $product->description) --}}
+
 @section('body')
     <div class="container mx-auto">
         <section class="text-gray-600 body-font overflow-hidden">

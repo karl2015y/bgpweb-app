@@ -1,4 +1,5 @@
 @extends('shop.layouts.checkout')
+@section('title', 'Dearme 結帳頁')
 
 @section('body')
     <div class="container mx-auto px-4 lg:px-8">
