@@ -2,7 +2,7 @@
 $menus = ('App\Models\Menu')::orderBy('index')->get();
 @endphp
 
-<header ref="header" class="z-20 bg-white" :class="{'shadow-2xl sticky top-0 w-full':header.isSticky}">
+<header ref="header" class="z-20 bg-white sticky top-0 w-full" :class="{'shadow-xl ':header.isSticky}">
     <div class="mx-8 sm:mx-12 py-3 sm:py-9">
         <div class="flex items-center justify-between">
             <div class="flex sm:hidden w-full gap-2">
