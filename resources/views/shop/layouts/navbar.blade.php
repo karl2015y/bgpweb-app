@@ -137,7 +137,8 @@ $menus = ('App\Models\Menu')::orderBy('index')->get();
                             d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
                         </path>
                     </svg>
-                    <span v-if="cart_items_count>0" class="-top-2 absolute bg-red-400 px-1 right-auto rounded-full text-white text-xs">@{{cart_items_count}}</span>
+                    <span v-if="cart_items_count>0"
+                        class="-top-2 absolute bg-red-400 px-1 right-auto rounded-full text-white text-xs">@{{ cart_items_count }}</span>
                 </button>
 
 
@@ -164,6 +165,7 @@ $menus = ('App\Models\Menu')::orderBy('index')->get();
                         showNav: true,
                     },
 
+
                     isMenuOpen: false,
                     isSearchInputOpen: false,
                 }
@@ -171,12 +173,25 @@ $menus = ('App\Models\Menu')::orderBy('index')->get();
 
             methods: {
 
+                move2sectionByUrlHashTag() {
+
+                    setTimeout(() => {
+                        offsetTop = document.querySelector(window.location.hash).offsetTop - document
+                            .querySelector('header').clientHeight
+
+                        window.scroll({
+                            top: offsetTop,
+                            left: 0,
+                            behavior: 'smooth'
+                        })
+                    }, 50)
+                }
 
             },
             watch: {
                 scroll_top_offset: function(pageYOffset) {
                     const vm = this;
-                    if (pageYOffset > vm.$refs.header.offsetTop) {
+                    if (vm.$refs.header.offsetTop > 0) {
                         vm.header.isSticky = true;
                         vm.header.showNav = false;
                     } else {

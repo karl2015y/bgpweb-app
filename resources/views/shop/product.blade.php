@@ -96,7 +96,7 @@
                             <div class="lg:gap-5 lg:items-start lg:text-left mb-6 text-center w-full sm:order-2"
                                 v-if="choose_product_item && choose_product_item.description">
                                 <h3 class="text-gray-350">品項說明</h3>
-                                <div class="text-gray-550" v-html="choose_product_item.description"></div>
+                                <div class="text-gray-550 whitespace-pre-line" v-html="choose_product_item.description"></div>
                             </div>
                             <div class="w-full sm:order-3">
                                 {{-- 商品品項 --}}

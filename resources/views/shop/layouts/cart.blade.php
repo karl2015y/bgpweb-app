@@ -1,13 +1,12 @@
 @php
 $cart_datas = (new App\Http\Controllers\CartController())->getCartDatas();
 @endphp
-<div v-on:click="cartOpen = !cartOpen" v-if="cartOpen"
-    class="fixed bg-black bg-opacity-40 h-screen top-0 w-screen z-20">
+<div v-on:click="cartOpen = !cartOpen" v-if="cartOpen" class="fixed bg-black bg-opacity-40 h-screen top-0 w-screen z-20">
 </div>
-<div :class="cartOpen ? 'translate-x-0 ease-out' : 'translate-x-full ease-in'"
-    class="z-20 fixed right-0 top-0 max-w-xs w-full h-full px-6 py-4 transition duration-300 transform overflow-y-auto bg-white border-l-2 border-gray-300">
+<div :class="cartOpen ? 'ease-out' : ''" :style="cartOpen ?'--tw-translate-x: 0px;':''"
+    class="translate-x-full ease-in z-20 fixed right-0 top-0 max-w-xs w-full h-full px-6 py-4 transition duration-300 transform overflow-y-auto bg-white border-l-2 border-gray-300">
     <div class="flex items-center justify-between">
-        <h3 class="text-2xl font-medium text-gray-700">購物車(@{{cart_items_count}})</h3>
+        <h3 class="text-2xl font-medium text-gray-700">購物車(@{{ cart_items_count }})</h3>
         <button @click.stop="cartOpen = !cartOpen" class="text-gray-600 focus:outline-none">
             <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 viewBox="0 0 24 24" stroke="currentColor">
@@ -91,7 +90,7 @@ $cart_datas = (new App\Http\Controllers\CartController())->getCartDatas();
             data: function() {
                 return {
                     cartOpen: false,
-                    cart_items_count:"{{count($cart_datas->items)??0}}"
+                    cart_items_count: "{{ count($cart_datas->items) ?? 0 }}"
                 }
             },
             methods: {
