@@ -1,9 +1,13 @@
 @extends('shop.layouts.master')
 
-@section('title', 'Dearme '.$product->name)
+@section('title', 'Dearme ' . $product->name)
 {{-- @section('description', $product->description) --}}
 
 @section('body')
+    <div id="loading" class="bg-gray-50 fixed z-20 top-0 left-0 w-full h-full flex justify-center items-center animate__animated animate__slower opacity-95">
+        <lottie-player src="/js/lottie/data.json" background="transparent"
+            speed="1.2" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+    </div>
     <div class="container mx-auto">
         <section class="text-gray-600 body-font overflow-hidden">
             <div class="container  mx-auto">
@@ -96,16 +100,18 @@
                             <div class="lg:gap-5 lg:items-start lg:text-left mb-6 text-center w-full sm:order-2"
                                 v-if="choose_product_item && choose_product_item.description">
                                 <h3 class="text-gray-350">品項說明</h3>
-                                <div class="text-gray-550 whitespace-pre-line" v-html="choose_product_item.description"></div>
+                                <div class="text-gray-550 whitespace-pre-line" v-html="choose_product_item.description">
+                                </div>
                             </div>
                             <div class="w-full sm:order-3">
                                 {{-- 商品品項 --}}
                                 <div v-for="type in product_types" class="mb-2 flex items-center w-full">
-                                    <span class="mr-3 w-3/12 ">@{{ type . name }}</span>
+                                    <span class="mr-3 w-3/12 ">@{{ type.name }}</span>
                                     <div class="relative w-full">
-                                        <select v-on:change="chooseProductItem()" :value="choose_product_item?choose_product_item.name:''"
+                                        <select v-on:change="chooseProductItem()"
+                                            :value="choose_product_item?choose_product_item.name:''"
                                             class="appearance-none border border-gray-350 focus:outline-none pl-3 pr-10 py-2 text-base w-full">
-                                            <option value="" hidden>請選擇@{{ type . name }}</option>
+                                            <option value="" hidden>請選擇@{{ type.name }}</option>
                                             <option v-for="option in type.options.split(', ')" :value="option">
                                                 @{{ option }}</option>
                                         </select>
@@ -155,8 +161,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <span
-                                        class="whitespace-nowrap text-sm text-gray-400">(存量：@{{ choose_product_item . count }})</span>
+                                    <span class="whitespace-nowrap text-sm text-gray-400">(存量：@{{ choose_product_item.count }})</span>
 
                                 </template>
 
@@ -199,12 +204,12 @@
 
                                 <template v-else-if="choose_product_item.org_price!=choose_product_item.sell_price">
                                     <span class="font-bold block title-font font-medium text-2xl text-red-600">限時特價：NTD
-                                        @{{ choose_product_item . sell_price }}</span>
+                                        @{{ choose_product_item.sell_price }}</span>
                                     <span class="line-through title-font font-medium text-sm text-gray-350">原價：NTD
-                                        @{{ choose_product_item . org_price }}</span>
+                                        @{{ choose_product_item.org_price }}</span>
                                 </template>
                                 <span v-else class="font-bold block title-font font-medium text-2xl text-gray-900">建議售價：NTD
-                                    @{{ choose_product_item . sell_price }}</span>
+                                    @{{ choose_product_item.sell_price }}</span>
 
                             </div>
 
@@ -330,6 +335,7 @@
 
 @section('JS-content')
     @parent
+    <script src="/js/lottie/lottie-player.js"></script>
 
     <script type="text/javascript">
         mixins.push({
@@ -369,8 +375,14 @@
                     vm.product_pics_count = vm.$refs.ProductPics.children.length;
                     vm.choosePic(vm.$refs.ProductPics.firstElementChild)
                     // vm.chooseProductItem()
-
                 }, 10);
+
+                setTimeout(() => {
+                    document.querySelector("#loading").classList.add("animate__fadeOut");
+                }, 2000)
+                setTimeout(() => {
+                    document.querySelector("#loading").remove();
+                }, 3500)
 
             },
             methods: {
