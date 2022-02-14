@@ -4,9 +4,10 @@
 {{-- @section('description', $product->description) --}}
 
 @section('body')
-    <div id="loading" class="bg-gray-50 fixed z-20 top-0 left-0 w-full h-full flex justify-center items-center animate__animated animate__slower opacity-95">
-        <lottie-player src="/js/lottie/data.json" background="transparent"
-            speed="1.2" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+    <div id="loading" v-show="!cartOpen"
+        class="bg-gray-50 fixed z-20 top-0 left-0 w-full h-full flex justify-center items-center animate__animated animate__slower opacity-95">
+        <lottie-player src="/js/lottie/data.json" background="transparent" speed="1.2" style="width: 300px; height: 300px;"
+            loop autoplay></lottie-player>
     </div>
     <div class="container mx-auto">
         <section class="text-gray-600 body-font overflow-hidden">
@@ -377,12 +378,18 @@
                     // vm.chooseProductItem()
                 }, 10);
 
-                setTimeout(() => {
-                    document.querySelector("#loading").classList.add("animate__fadeOut");
-                }, 2000)
-                setTimeout(() => {
+                if (this.cartOpen) {
                     document.querySelector("#loading").remove();
-                }, 3500)
+                } else {
+                    setTimeout(() => {
+                        document.querySelector("#loading").classList.add("animate__fadeOut");
+                    }, 2000)
+                    setTimeout(() => {
+                        document.querySelector("#loading").remove();
+                    }, 3500)
+                }
+
+
 
             },
             methods: {
