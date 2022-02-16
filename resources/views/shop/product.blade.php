@@ -383,10 +383,10 @@
                 } else {
                     setTimeout(() => {
                         document.querySelector("#loading").classList.add("animate__fadeOut");
-                    }, 2000)
+                    }, 1000)
                     setTimeout(() => {
                         document.querySelector("#loading").remove();
-                    }, 3500)
+                    }, 2500)
                 }
 
 
