@@ -111,6 +111,34 @@ $setting = new \App\Http\Controllers\SettingController();
         </div>
     @endif
 
+
+    @if ($setting->get('ad_title') && $setting->get('ad_content') && $setting->get('ad_button') && $setting->get('ad_button_link'))
+        <script type="text/javascript">
+            if (new Date().getTime() > Number(localStorage.getItem("doNotShowAdAgain"))) {
+                Swal.fire({
+                    title: "{{ $setting->get('ad_title') }}",
+                    html: `<p style="white-space: pre-line;">{{ $setting->get('ad_content') }}</p>`,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    showCancelButton: true,
+                    confirmButtonText: `{{ $setting->get('ad_button') }}`,
+                    cancelButtonText: '今天不再顯示',
+
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = `{{ $setting->get('ad_button_link') }}`
+                    } else if (
+                        /* Read more about handling dismissals below */
+                        result.dismiss === Swal.DismissReason.cancel
+                    ) {
+                        localStorage.setItem("doNotShowAdAgain", new Date(new Date().setHours(0, 0, 0, 0) + 24 * 60 *
+                            60 * 1000 - 1).getTime())
+                    }
+                })
+            }
+        </script>
+    @endif
+
 </body>
 
 </html>

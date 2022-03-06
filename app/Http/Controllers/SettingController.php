@@ -15,52 +15,56 @@ class SettingController extends Controller
     public function createFackData()
     {
         $kvs = [
-            ['key' => 'main_logo', 'value' => '/images/main_logo.png', 'type' => 'pic', 'text' => '主LOGO'],
-            ['key' => 'sec_logo', 'value' => '/images/sec_logo.png', 'type' => 'pic', 'text' => '副LOGO'],
-            // FB
-            ['key' => 'facebook_icon', 'value' => 'fab fa-facebook text-xl', 'text' => 'FB Icon'],
-            ['key' => 'facebook_icon_color', 'value' => 'text-gray-350', 'text' => 'FB Icon 顏色'],
-            ['key' => 'facebook_icon_hover_color', 'value' => 'text-gray-550', 'text' => 'FB Icon 滑鼠滑過時的顏色'],
-            ['key' => 'facebook_link', 'value' => '#FB', 'text' => 'FB 連結'],
-            // IG
-            ['key' => 'instagram_icon', 'value' => 'fab fa-instagram text-xl', 'text' => 'IG Icon'],
-            ['key' => 'instagram_icon_color', 'value' => 'text-gray-350', 'text' => 'IG Icon 顏色'],
-            ['key' => 'instagram_icon_hover_color', 'value' => 'text-gray-550', 'text' => 'IG Icon 滑鼠滑過時的顏色'],
-            ['key' => 'instagram_link', 'value' => '#IG', 'text' => 'IG 連結'],
-            // TWITTER
-            ['key' => 'twitter_icon', 'value' => 'fab fa-twitter text-xl', 'text' => 'Twitter Icon'],
-            ['key' => 'twitter_icon_color', 'value' => 'text-gray-350', 'text' => 'Twitter Icon 顏色'],
-            ['key' => 'twitter_icon_hover_color', 'value' => 'text-gray-550', 'text' => 'Twitter Icon 滑鼠滑過時的顏色'],
-            ['key' => 'twitter_link', 'value' => '#TWITTER', 'text' => 'Twitter 連結'],
-            // LINE
-            ['key' => 'line_icon', 'value' => 'fab fa-line text-xl', 'text' => 'LINE Icon'],
-            ['key' => 'line_icon_color', 'value' => 'text-gray-350', 'text' => 'LINE Icon 顏色'],
-            ['key' => 'line_icon_hover_color', 'value' => 'text-gray-550', 'text' => 'LINE Icon 滑鼠滑過時的顏色'],
-            ['key' => 'line_link', 'value' => '#LINE', 'text' => 'LINE 連結'],
-            // ECPAY
-            ['key' => 'ecpay_MerchantID', 'value' => '2000132', 'text' => '綠界特店編號(MerchantID)'],
-            ['key' => 'ecpay_HashKey', 'value' => '5294y06JbISpM5x9', 'text' => '綠界HashKey'],
-            ['key' => 'ecpay_HashIV', 'value' => 'v77hoKGq4kWxNNIS', 'text' => '綠界HashIV'],
+            // ['key' => 'main_logo', 'value' => '/images/main_logo.png', 'type' => 'pic', 'text' => '主LOGO'],
+            // ['key' => 'sec_logo', 'value' => '/images/sec_logo.png', 'type' => 'pic', 'text' => '副LOGO'],
+            // // FB
+            // ['key' => 'facebook_icon', 'value' => 'fab fa-facebook text-xl', 'text' => 'FB Icon'],
+            // ['key' => 'facebook_icon_color', 'value' => 'text-gray-350', 'text' => 'FB Icon 顏色'],
+            // ['key' => 'facebook_icon_hover_color', 'value' => 'text-gray-550', 'text' => 'FB Icon 滑鼠滑過時的顏色'],
+            // ['key' => 'facebook_link', 'value' => '#FB', 'text' => 'FB 連結'],
+            // // IG
+            // ['key' => 'instagram_icon', 'value' => 'fab fa-instagram text-xl', 'text' => 'IG Icon'],
+            // ['key' => 'instagram_icon_color', 'value' => 'text-gray-350', 'text' => 'IG Icon 顏色'],
+            // ['key' => 'instagram_icon_hover_color', 'value' => 'text-gray-550', 'text' => 'IG Icon 滑鼠滑過時的顏色'],
+            // ['key' => 'instagram_link', 'value' => '#IG', 'text' => 'IG 連結'],
+            // // TWITTER
+            // ['key' => 'twitter_icon', 'value' => 'fab fa-twitter text-xl', 'text' => 'Twitter Icon'],
+            // ['key' => 'twitter_icon_color', 'value' => 'text-gray-350', 'text' => 'Twitter Icon 顏色'],
+            // ['key' => 'twitter_icon_hover_color', 'value' => 'text-gray-550', 'text' => 'Twitter Icon 滑鼠滑過時的顏色'],
+            // ['key' => 'twitter_link', 'value' => '#TWITTER', 'text' => 'Twitter 連結'],
+            // // LINE
+            // ['key' => 'line_icon', 'value' => 'fab fa-line text-xl', 'text' => 'LINE Icon'],
+            // ['key' => 'line_icon_color', 'value' => 'text-gray-350', 'text' => 'LINE Icon 顏色'],
+            // ['key' => 'line_icon_hover_color', 'value' => 'text-gray-550', 'text' => 'LINE Icon 滑鼠滑過時的顏色'],
+            // ['key' => 'line_link', 'value' => '#LINE', 'text' => 'LINE 連結'],
+            // // ECPAY
+            // ['key' => 'ecpay_MerchantID', 'value' => '2000132', 'text' => '綠界特店編號(MerchantID)'],
+            // ['key' => 'ecpay_HashKey', 'value' => '5294y06JbISpM5x9', 'text' => '綠界HashKey'],
+            // ['key' => 'ecpay_HashIV', 'value' => 'v77hoKGq4kWxNNIS', 'text' => '綠界HashIV'],
 
-            ['key' => 'SenderName', 'value' => '李碩祺', 'text' => '寄件人姓名'],
-            ['key' => 'SenderPhone', 'value' => '886912345678', 'text' => '寄件人電話'],
-            ['key' => 'SenderCellPhone', 'value' => '0912345678', 'text' => '寄件人手機'],
-            ['key' => 'SenderZipCode', 'value' => '408', 'text' => '寄件人郵遞區號'],
-            ['key' => 'SenderAddress', 'value' => '臺中市南屯區', 'text' => '寄件人地址'],
+            // ['key' => 'SenderName', 'value' => '李碩祺', 'text' => '寄件人姓名'],
+            // ['key' => 'SenderPhone', 'value' => '886912345678', 'text' => '寄件人電話'],
+            // ['key' => 'SenderCellPhone', 'value' => '0912345678', 'text' => '寄件人手機'],
+            // ['key' => 'SenderZipCode', 'value' => '408', 'text' => '寄件人郵遞區號'],
+            // ['key' => 'SenderAddress', 'value' => '臺中市南屯區', 'text' => '寄件人地址'],
 
-            // 物流價錢
-            ['key' => 'owner_shipping', 'value' => '110', 'text' => '基本物流(自訂物流)價錢'],
-            ['key' => 'HOME_TCAT', 'value' => '120', 'text' => '黑貓物流價錢'],
-            ['key' => 'HOME_ECAN', 'value' => '130', 'text' => '宅配通價錢'],
-            ['key' => 'CVS_FAMIC2C', 'value' => '65', 'text' => '全家物流價錢'],
-            ['key' => 'CVS_UNIMARTC2C', 'value' => '66', 'text' => '7-ELEVEN 超商物流價錢'],
-            ['key' => 'CVS_HILIFEC2C', 'value' => '67', 'text' => '萊爾富物流價錢'],
-            ['key' => 'CVS_OKMARTC2C', 'value' => '68', 'text' => 'OK 超商價錢'],
+            // // 物流價錢
+            // ['key' => 'owner_shipping', 'value' => '110', 'text' => '基本物流(自訂物流)價錢'],
+            // ['key' => 'HOME_TCAT', 'value' => '120', 'text' => '黑貓物流價錢'],
+            // ['key' => 'HOME_ECAN', 'value' => '130', 'text' => '宅配通價錢'],
+            // ['key' => 'CVS_FAMIC2C', 'value' => '65', 'text' => '全家物流價錢'],
+            // ['key' => 'CVS_UNIMARTC2C', 'value' => '66', 'text' => '7-ELEVEN 超商物流價錢'],
+            // ['key' => 'CVS_HILIFEC2C', 'value' => '67', 'text' => '萊爾富物流價錢'],
+            // ['key' => 'CVS_OKMARTC2C', 'value' => '68', 'text' => 'OK 超商價錢'],
 
-            // FB Chat
-            ['key' => 'facebook_chat', 'value' => '', 'type' => 'textarea', 'text' => 'FB紛絲專頁聊天室'],
-            // GTM
-            ['key' => 'GTM', 'value' => '', 'type' => 'textarea', 'text' => 'GTM追蹤/GA追蹤'],
+            // // FB Chat
+            // ['key' => 'facebook_chat', 'value' => '', 'type' => 'textarea', 'text' => 'FB紛絲專頁聊天室'],
+            // // GTM
+            // ['key' => 'GTM', 'value' => '', 'type' => 'textarea', 'text' => 'GTM追蹤/GA追蹤'],
+            ['key' => 'ad_title', 'value' => '', 'text' => '廣告標題'],
+            ['key' => 'ad_content', 'value' => '', 'type' => 'textarea', 'text' => '廣告內容'],
+            ['key' => 'ad_button', 'value' => '', 'text' => '廣告按鈕'],
+            ['key' => 'ad_button_link', 'value' => '', 'text' => '廣告按鈕連結'],
 
         ];
         foreach ($kvs as $kv) {
