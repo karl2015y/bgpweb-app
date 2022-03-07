@@ -118,8 +118,6 @@ $setting = new \App\Http\Controllers\SettingController();
                 Swal.fire({
                     title: "{{ $setting->get('ad_title') }}",
                     html: `<p style="white-space: pre-line;">{{ $setting->get('ad_content') }}</p>`,
-                    timer: 5000,
-                    timerProgressBar: true,
                     showCancelButton: true,
                     confirmButtonText: `{{ $setting->get('ad_button') }}`,
                     cancelButtonText: '今天不再顯示',
