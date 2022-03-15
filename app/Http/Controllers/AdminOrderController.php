@@ -69,7 +69,7 @@ class AdminOrderController extends Controller
     public function order2Fail()
     {
         $threeDaysAgo = 'Carbon\Carbon'::now()->subDays(3);
-        'App\Models\Order'::where('updated_at', '<', $threeDaysAgo)->where('status', '<>', 'fail')->update(['status' => 'fail']);
+        'App\Models\Order'::where('updated_at', '<', $threeDaysAgo)->where('status', 'create')->update(['status' => 'fail']);
     }
 
 
