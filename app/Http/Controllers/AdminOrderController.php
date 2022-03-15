@@ -41,14 +41,14 @@ class AdminOrderController extends Controller
         if ($filter != 'all') {
             $orders = $orders->where('status', $filter);
         } else {
-            $orders = $orders->where('status', '<>', "preCreate");
+            $orders = $orders->where('status', '<>', "preCreate")->where('status', '<>', "fail");
         }
 
         $email = $request->input('email') ?? '';
-        if($email){
+        if ($email) {
             $orders->where('receiver_email', $email);
         }
-        
+
 
         $orders = $orders->paginate(10);
         $orders->appends(['filter' => $filter, 'email' => $email]);
@@ -65,6 +65,14 @@ class AdminOrderController extends Controller
         // return $data;
         return view('admin.orders.ordersPage', $data);
     }
+
+    public function order2Fail()
+    {
+        $threeDaysAgo = 'Carbon\Carbon'::now()->subDays(3);
+        'App\Models\Order'::where('updated_at', '<', $threeDaysAgo)->where('status', '<>', 'fail')->update(['status' => 'fail']);
+    }
+
+
     // 訂單列表 - 已付款2揀貨中
     public function ordersPaid2PreOutPage(Request $request)
     {
@@ -207,23 +215,23 @@ class AdminOrderController extends Controller
                 ->with('message', $message);
         }
         $order = 'App\Models\Order'::find($order_id);
-        $order->status= 'outed';
-        $order->note= $note;
+        $order->status = 'outed';
+        $order->note = $note;
         $order->save();
 
 
         $details = [
             'title' => 'DearMe 出貨通知(您的支持就是我們最大的動力!!!!)',
             'user' => 'App\Models\User'::where('email', $order['receiver_email'])->first(),
-            'register_link' =>  route('registerPage', ['email' => $order['receiver_email'], 'code'=> $order->session_id]), 
-            'orders_link' => route('myOrderPage'), 
+            'register_link' =>  route('registerPage', ['email' => $order['receiver_email'], 'code' => $order->session_id]),
+            'orders_link' => route('myOrderPage'),
             'order' => $order,
             'order_items' => $order->Items,
         ];
- 
 
-        $details['order']->status_text=$this->status_list[$details['order']->status];
-        $details['order']->ship_type_text=$this->ship_types[$details['order']->ship_type];
+
+        $details['order']->status_text = $this->status_list[$details['order']->status];
+        $details['order']->ship_type_text = $this->ship_types[$details['order']->ship_type];
 
         '\Mail'::to($order['receiver_email'])->send(new \App\Mail\MemberProductDetailMail($details));
 
