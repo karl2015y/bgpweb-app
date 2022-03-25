@@ -32,11 +32,26 @@
             @yield('body')
         </main>
     </div>
-    <footer class="flex gap-2 text-brown font-semibold mt-4">
-        <a href="#refund" v-on:click="openIframe('/refund')">退款政策</a>
-        <a href="#deliver" v-on:click="openIframe('/deliver')">運送政策</a>
-        <a href="#privacy-policy" v-on:click="openIframe('/privacy-policy')">隱私政策</a>
-        <a href="#servicepolicy" v-on:click="openIframe('/servicepolicy')">服務條款</a>
+    <footer class=" text-brown font-semibold mt-4">
+        <div class="flex gap-2 justify-center">
+            <a href="#refund" v-on:click="openIframe('/refund')">退款政策</a>
+            <a href="#deliver" v-on:click="openIframe('/deliver')">運送政策</a>
+            <a href="#privacy-policy" v-on:click="openIframe('/privacy-policy')">隱私政策</a>
+            <a href="#servicepolicy" v-on:click="openIframe('/servicepolicy')">服務條款</a>
+
+        </div>
+        <div class="text-sm text-gray-350 sm:ml-6 sm:mt-0 mt-4 text-center md:flex ">
+            <div>© 2021 DEARME</div>
+            <div class="border-solid md:border-l pl-2 ml-2">
+                連絡電話：<a href="tel:067264458">06-7264458</a>
+            </div>
+            <div class="border-solid md:border-l pl-2 ml-2">
+                信箱：<a href="mailto: dearmeofficialtw@gmail.com">dearmeofficialtw@gmail.com</a>
+            </div>
+            <div class="border-solid md:border-l pl-2 ml-2">客服時間：週一至週五 9:00AM~5:00PM</div>
+        </div>
+
+
     </footer>
 
 

@@ -19,8 +19,17 @@
                 <img class="w-72 sm:w-32 h-auto" src="{{ $setting->get('sec_logo') }}" alt="DEARME">
 
             </a>
-            <p class="text-sm text-gray-350 sm:ml-6 sm:mt-0 mt-4">© 2021 DEARME
-            </p>
+            <div class="text-sm text-gray-350 sm:ml-6 sm:mt-0 mt-4 text-center md:flex ">
+                <div>© 2021 DEARME</div>
+                <div class="border-solid md:border-l pl-2 ml-2">
+                    連絡電話：<a href="tel:067264458">06-7264458</a>
+                </div>
+                <div class="border-solid md:border-l pl-2 ml-2">
+                    信箱：<a href="mailto: dearmeofficialtw@gmail.com">dearmeofficialtw@gmail.com</a>
+                </div>
+                <div class="border-solid md:border-l pl-2 ml-2">客服時間：週一至週五 9:00AM~5:00PM</div>
+            </div>
+
             <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start gap-3">
                 @if ($setting->get('facebook_link'))
                     <a href="{{ $setting->get('facebook_link') }}"
