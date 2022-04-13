@@ -90,7 +90,7 @@ $cart_datas = (new App\Http\Controllers\CartController())->getCartDatas();
             data: function() {
                 return {
                     cartOpen: false,
-                    cart_items_count: "{{ count($cart_datas->items) ?? 0 }}"
+                    cart_items_count: "{{ $cart_datas && $cart_datas->items ? count($cart_datas->items) : 0 }}"
                 }
             },
             methods: {
@@ -116,9 +116,11 @@ $cart_datas = (new App\Http\Controllers\CartController())->getCartDatas();
             },
             created: function() {
                 /* 
-                @if (session('open_control_div'))*/
+                @if (session('open_control_div'))
+                    */
                     this.cartOpen = true;
-                    /* @endif */
+                    /*
+                @endif */
             }
         })
     </script>
